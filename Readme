@@ -1,0 +1,38 @@
+## Structure du Code
+
+Exemple d'interprétation
+ qu’il y a seulement une chance sur 100, sous des conditions
+normales de marché, que la perte associée à la détention de ce portefeuille
+sur une journée excède 1 million de dollars.
+
+La Value-at-Risk correspond à une perte maximale potentielle qui
+ne devrait être atteinte qu’avec une probabilité donnée sur un
+horizon temporel donné
+
+Un dossier contenant le fichier __init__.py est un package 
+
+La définition de la Value-at-Risk est fondée sur trois éléments
+1 - La distribution des profits et pertes (P&L) du portefeuille ou de
+l’actif
+2 - Le niveau de confiance (1 −α) ou de façon équivalente le taux de
+couverture (égal à un moins le niveau de confiance)
+3 -  La période de détention de l’actif (ou horizon du risque) 
+
+Tous les calculs d'estimation de la Var sont dans le fichier VarEstimation.py
+Méthodes d"estimation utilisées dans ce code:
+-------------------------------------------------------------------------
+|Classe             | Méthodes                  | Var estimée           |
+-------------------------------------------------------------------------
+|Non paramétriques  | Historique                | VaR non conditionnelle|
+-------------------------------------------------------------------------
+|Semi-paramétriques |-Variance-covariance (VCV),|Var conditionnelle     |
+|                   |-Valeurs extrêmes (TVE)    |                       |
+-------------------------------------------------------------------------
+|Paramétriques      |-VaR GARCH,                |VaR conditionnelle     |
+|                   |-VaR TVE,                  |VaR conditionnelle     |
+|                   |-RiskMetrics               |VaR conditionnelle     |
+------------------------------------------------------------------------
+
+
+les returns du portefeuille sont le PnL journalier
+Prévision de la VaR Conditionnelle page 44
