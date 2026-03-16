@@ -19,7 +19,7 @@ from ui.exports_ui import export_risk_excel, export_risk_pdf
 from onglets.module.mailer import send_report_email
 
 
-DATA_FILE = r"onglets\Data_set.xlsx"
+DATA_FILE = "Data_set.xlsx"
 INDEX_NAME = "Cac40"
 
 

@@ -5,7 +5,7 @@ from onglets.module.utils import load_price_data
 from onglets.module.VarEstimation import compute_all_var_methods
 
 
-DATA_FILE = r"onglets\Data_set.xlsx"
+DATA_FILE = "Data_set.xlsx"
 INDEX_NAME = "Cac40"
 
 
