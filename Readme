@@ -1,38 +1,172 @@
-## Structure du Code
 
-Exemple d'interprétation
- qu’il y a seulement une chance sur 100, sous des conditions
-normales de marché, que la perte associée à la détention de ce portefeuille
-sur une journée excède 1 million de dollars.
+# Market Risk Analytics Platform
 
-La Value-at-Risk correspond à une perte maximale potentielle qui
-ne devrait être atteinte qu’avec une probabilité donnée sur un
-horizon temporel donné
+Application de gestion du **risque de marché d’un portefeuille d’actions** permettant :
 
-Un dossier contenant le fichier __init__.py est un package 
+- la construction de portefeuille
+- l’analyse de performance
+- l’estimation de la **Value-at-Risk (VaR)**
+- le **backtesting des modèles**
+- la génération de **reportings Excel et PDF**
+- l’envoi automatique des reportings par email
 
-La définition de la Value-at-Risk est fondée sur trois éléments
-1 - La distribution des profits et pertes (P&L) du portefeuille ou de
-l’actif
-2 - Le niveau de confiance (1 −α) ou de façon équivalente le taux de
-couverture (égal à un moins le niveau de confiance)
-3 -  La période de détention de l’actif (ou horizon du risque) 
+L'application est développée avec **Python et Streamlit**.
 
-Tous les calculs d'estimation de la Var sont dans le fichier VarEstimation.py
-Méthodes d"estimation utilisées dans ce code:
--------------------------------------------------------------------------
-|Classe             | Méthodes                  | Var estimée           |
--------------------------------------------------------------------------
-|Non paramétriques  | Historique                | VaR non conditionnelle|
--------------------------------------------------------------------------
-|Semi-paramétriques |-Variance-covariance (VCV),|Var conditionnelle     |
-|                   |-Valeurs extrêmes (TVE)    |                       |
--------------------------------------------------------------------------
-|Paramétriques      |-VaR GARCH,                |VaR conditionnelle     |
-|                   |-VaR TVE,                  |VaR conditionnelle     |
-|                   |-RiskMetrics               |VaR conditionnelle     |
-------------------------------------------------------------------------
+---
+
+# Value-at-Risk : définition
+
+La **Value-at-Risk (VaR)** correspond à la **perte maximale potentielle** qu’un portefeuille peut subir :
+
+- avec un **niveau de confiance donné**
+- sur un **horizon temporel donné**
+- dans des **conditions normales de marché**
+
+### Exemple d’interprétation
+
+Une VaR journalière de **1 million de dollars à 99 %** signifie qu’il existe seulement **1 chance sur 100** que la perte du portefeuille dépasse **1 million de dollars sur une journée** dans des conditions normales de marché.
+
+---
+
+# Fondements de la Value-at-Risk
+
+La définition de la VaR repose sur trois éléments fondamentaux :
+
+1. **La distribution des profits et pertes (P&L)** du portefeuille  
+2. **Le niveau de confiance** (1 − α)  
+3. **L’horizon de détention du risque**  
 
 
-les returns du portefeuille sont le PnL journalier
-Prévision de la VaR Conditionnelle page 44
+# Structure du code
+
+Un dossier contenant un fichier `__init__.py` est reconnu comme un **package Python**.
+
+Structure simplifiée du projet :
+
+```
+project/
+│
+├── app.py
+│
+├── onglets/
+│   ├── tab_home.py
+│   ├── tab_parametrage.py
+│   ├── tab_perform.py
+│
+├── module/
+│   ├── VarEstimation.py
+│   ├── backtesting.py
+│   ├── performance.py
+│   ├── utils.py
+│
+├── ui/
+│   ├── exports_ui.py
+│
+└── Data_set.xlsx
+```
+
+---
+
+# Estimation de la Value-at-Risk
+
+Tous les calculs d'estimation de la VaR sont implémentés dans :
+
+```
+VarEstimation.py
+```
+
+Plusieurs approches sont utilisées afin de capturer différentes dynamiques de risque.
+
+---
+
+# Méthodes d'estimation utilisées
+
+| Classe | Méthodes | Type de VaR |
+|------|------|------|
+| Non paramétriques | Historique | VaR non conditionnelle |
+| Semi-paramétriques | Variance-Covariance (VCV) | VaR conditionnelle |
+|  | Théorie des Valeurs Extrêmes (EVT) | VaR conditionnelle |
+| Paramétriques | GARCH | VaR conditionnelle |
+|  | EVT-GARCH | VaR conditionnelle |
+|  | RiskMetrics | VaR conditionnelle |
+
+---
+
+# Prévision de la VaR conditionnelle
+
+Les modèles de volatilité conditionnelle permettent de prévoir la VaR future du portefeuille.
+
+Ces approches reposent sur l’estimation de la volatilité dynamique du portefeuille à l’aide de modèles :
+
+- **GARCH**
+- **RiskMetrics**
+- **EVT-GARCH**
+
+La prévision de la VaR conditionnelle est décrite dans la documentation théorique associée (page 44).
+
+---
+
+# Backtesting des modèles
+
+Les estimations de VaR sont validées à l’aide de tests statistiques :
+
+- **Test de Kupiec**
+- **Test de couverture conditionnelle de Christoffersen**
+
+Ces tests permettent d’évaluer si les violations de VaR observées sont cohérentes avec le niveau de confiance choisi.
+
+---
+
+# Reporting
+
+L'application génère automatiquement :
+
+### Reporting Excel
+
+Contenant :
+
+- synthèse des performances
+- estimations de VaR
+- résultats de backtesting
+- matrice de covariance
+- matrice de corrélation
+- simulation Monte Carlo
+
+### Reporting PDF exécutif
+
+Destiné au management :
+
+- synthèse du portefeuille
+- interprétation des résultats
+- conclusion sur le niveau de risque
+
+---
+
+# Fonctionnalités supplémentaires
+
+L’application permet également :
+
+- la **simulation Monte Carlo du PnL**
+- la comparaison **portefeuille / indice de marché**
+- la visualisation de l'évolution des actifs du portefeuille
+- l’envoi automatique des reportings **par email**
+
+---
+
+# Technologies utilisées
+
+- Python
+- Streamlit
+- Pandas
+- NumPy
+- Plotly
+- Statsmodels
+- Arch (GARCH)
+- Matplotlib
+- XlsxWriter
+
+---
+
+# Auteur
+
+Projet de gestion du **risque de marché d’un portefeuille d’actions** développé dans le cadre d’un projet de modélisation financière.
