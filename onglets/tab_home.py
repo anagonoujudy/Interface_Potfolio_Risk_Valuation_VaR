@@ -4,7 +4,7 @@ from onglets.module.utils import load_price_data, split_asset_and_market_returns
 from onglets.module.capm import *
 
 
-DATA_FILE = "onglets\Data_set.xlsx"
+DATA_FILE = r"onglets\Data_set.xlsx"
 INDEX_NAME = "Cac40"
 SECTOR_BUCKETS = {
     "Energie": ["BOLL_Price", "ENGIE_Price", "TTEF_Price"],
