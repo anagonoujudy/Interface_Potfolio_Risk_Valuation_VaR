@@ -175,7 +175,7 @@ def render_home_tab():
 #---------------------------------------------------------------------------
         c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
         with c1 : 
-            if st.checkbox("Valider"): 
+            if st.checkbox("Je confirme mon choix"): 
                 st.session_state.portfolio_validated = True
         if st.session_state.portfolio_validated == True:
             if strategy == "Portefeuille équilibré":
@@ -283,7 +283,7 @@ def render_home_tab():
             )
             st.dataframe(weights_df, use_container_width=True, hide_index=True)
 
-        if st.button("Valider le portefeuille personnalisé", use_container_width=True):
+        if st.button("Utiliser ce portefeuille", use_container_width=True):
             if not portfolio_assets:
                 st.error("Veuillez sélectionner au moins un actif.")
             elif not final_weights:
@@ -295,7 +295,7 @@ def render_home_tab():
                 st.session_state["selected_portfolio_source"] = "custom"
                 st.session_state["portfolio_ready"] = True
 
-                st.success("Portefeuille personnalisé validé. Vous pouvez poursuivre dans l’onglet Paramétrage.")
+                st.success("Portefeuille enregistré avec succès")
         with st.expander("Méthodologie d’optimisation du portefeuille (Modèle CAPM)"):
 
             st.markdown(
@@ -437,5 +437,5 @@ def render_home_tab():
     st.markdown("--")
     c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
     with c7 : 
-        if st.button("Valider tout"): 
+        if st.button("Valider portefeuille"): 
            st.session_state.next_step = True
