@@ -173,7 +173,7 @@ def render_home_tab():
         final_weights = None
         summary_metrics = None
 #---------------------------------------------------------------------------
-        c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
+        c1, c2, c3, c4, c5 = st.columns(5)
         with c1 : 
             if st.checkbox("Je confirme mon choix"): 
                 st.session_state.portfolio_validated = True
@@ -282,6 +282,7 @@ def render_home_tab():
                 }
             )
             st.dataframe(weights_df, use_container_width=True, hide_index=True)
+        
 
         if st.button("Utiliser ce portefeuille", use_container_width=True):
             if not portfolio_assets:
