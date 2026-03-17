@@ -952,7 +952,7 @@ def export_risk_pdf(
                 color="#0F172A",
                 width=105,
             )
-            y -= 0.085
+            y -= 0.03
 
         pdf.savefig(fig, bbox_inches="tight")
         plt.close(fig)

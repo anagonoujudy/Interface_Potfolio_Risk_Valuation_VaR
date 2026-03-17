@@ -22,12 +22,6 @@ La **Value-at-Risk (VaR)** correspond à la **perte maximale potentielle** qu’
 - sur un **horizon temporel donné**
 - dans des **conditions normales de marché**
 
-### Exemple d’interprétation
-
-Une VaR journalière de **1 million de dollars à 99 %** signifie qu’il existe seulement **1 chance sur 100** que la perte du portefeuille dépasse **1 million de dollars sur une journée** dans des conditions normales de marché.
-
----
-
 # Fondements de la Value-at-Risk
 
 La définition de la VaR repose sur trois éléments fondamentaux :
@@ -61,21 +55,18 @@ project/
 │
 ├── ui/
 │   ├── exports_ui.py
+│   ├── state.py
+│   ├── theme.py
 │
 └── Data_set.xlsx
 ```
+### Un dossier contenant __init__.py est un module
 
----
+### Tous les calculs d'estimation de la VaR sont implémentés dans VarEstimation.py 
 
-# Estimation de la Value-at-Risk
+### Tous les calculs de backtesting sont implémentés dans backtesting.py 
 
-Tous les calculs d'estimation de la VaR sont implémentés dans :
-
-```
-VarEstimation.py
-```
-
-Plusieurs approches sont utilisées afin de capturer différentes dynamiques de risque.
+### Le modèle Capm est implémenté dans capm.py 
 
 ---
 
